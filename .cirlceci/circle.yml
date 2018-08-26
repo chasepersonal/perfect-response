@@ -1,0 +1,5 @@
+# To specify a specific python version for CircleCI build
+
+machine:
+  python:
+    version: 3.6.5
