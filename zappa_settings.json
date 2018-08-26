@@ -1,0 +1,31 @@
+{
+    "common": {
+        "app_function": "perfect-response.app",
+        "aws_region": "us-west-2",
+        "exclude": [
+            "__pycache__",
+            ".git/*",
+            ".gitignore",
+            ".python-version",
+            "LICENSE",
+            "README.md",
+            "requirements.txt",
+            "zappa_settings.json"
+        ],
+        "profile_name": "default",
+        "project_name": "prefect-response",
+        "runtime": "python3.6",
+        "s3_bucket": "perfect-response",
+        "memory_size": 128
+    },
+    "prod": {
+        "extends": "common",
+        "keep_warm": true,
+        "keep_warm_expression": "rate(5 minutes)",
+        "timeout_seconds": 30
+    },
+    "dev": {
+        "extends": "common",
+        "debug": true
+    }
+}

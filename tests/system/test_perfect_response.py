@@ -15,11 +15,15 @@ class TestPerfectResponse(TestCase):
     def test_is_valid_perfect_response(self):
         # Mock the incoming slack request with the appropriate data needed for validation
         with app.test_request_context(data = {'token': 'mock_token', 'team_id': 'mock_id'}):
-            valid_token = request.form['token'] == os.environ['SLACK_VERIFICATION_TOKEN']
-            valid_id = request.form['team_id'] == os.environ['SLACK_TEAM_ID']
-
-            self.assertTrue(valid_token)
-            self.assertTrue(valid_id)
+            # Set mocked get request
+            incoming_token = request.form['token']
+            incoming_id = request.form['team_id']
+            # Set mocked environment
+            environment_token = os.environ['SLACK_VERIFICATION_TOKEN']
+            environment_id = os.environ['SLACK_TEAM_ID']
+            # Assert that the mocked request and mocked environment are equal
+            self.assertEqual(incoming_token, environment_token)
+            self.assertTrue(incoming_id, environment_id)
 
             # Once validated, ensure a response is sent
             resp = Response(
