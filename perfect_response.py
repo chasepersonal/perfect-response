@@ -23,7 +23,7 @@ def is_request_valid(request):
 
     return is_token_valid and is_team_id_valid
 
-
+# Will route to Slack slash command
 @app.route('/perfect-response', methods=['POST'])
 def perfect_response():
     # If request is not valid, log a failure message then abort the request
