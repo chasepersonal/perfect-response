@@ -21,6 +21,7 @@ def is_request_valid(request):
     is_token_valid = request.form['token'] == os.environ['SLACK_VERIFICATION_TOKEN']
     is_team_id_valid = request.form['team_id'] == os.environ['SLACK_TEAM_ID']
 
+    # Return value if token and id are valid
     return is_token_valid and is_team_id_valid
 
 # Will route to Slack slash command
